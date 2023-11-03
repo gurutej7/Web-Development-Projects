@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Skill Survey by Gurutech</title>
+  <link rel="stylesheet" href="style.css" >
+</head>
+<body>
+  <!-- Form Heading-->
+  <h1>Skill Survey by Gurutech</h1>
+  <form id="form">
+    <div class="form-control">
+      <!-- Name Input -->
+      <label for="name" id="label-name">
+        Name
+      </label>
+      <input type="text" id="name" placeholder="Enter your name" />
+    </div>
+    <div class="form-control">
+      <!-- Email Input -->
+      <label for="email" id="label-email">
+        Email
+      </label>
+      <input type="email" id="email" placeholder="Enter your email" />
+    </div>
+    <div class="form-control">
+      <label for="age" id="label-age">
+          Age
+      </label>
+      <!-- Age Input -->
+      <input type="text" id="age" placeholder="Enter your age" />
+  </div>
+
+  <div class="form-control">
+      <label for="role" id="label-role">
+          Which option best describes you?
+      </label>
+       
+      <!-- Dropdown options -->
+      <select name="role" id="role">
+          <option value="student">Student</option>
+          <option value="intern">Intern</option>
+          <option value="professional">
+              Professional
+          </option>
+          <option value="other">Other</option>
+      </select>
+  </div>
+    <div class="form-control">
+      <!-- CheckBox input from the user -->
+      <label>Languages and Frameworks known
+        <small>(Check all that apply)</small>
+      </label>
+      <label for="inp-1">
+        <input type="checkbox" name="inp">C</input>
+      </label>
+      <label for="inp-2">
+        <input type="checkbox" name="inp">C++</input>
+      </label>
+      <label for="inp-3">
+        <input type="checkbox" name="inp">C#</input>
+      </label>
+      <label for="inp-4">
+        <input type="checkbox" name="inp">Java</input>
+      </label>
+      <label for="inp-5">
+        <input type="checkbox" name="inp">Python</input>
+      </label>
+      <label for="inp-6">
+        <input type="checkbox" name="inp">JavaScript</input>
+      </label>
+      <label for="inp-7">
+        <input type="checkbox"name="inp">React</input></label>
+    <label for="inp-7">
+        <input type="checkbox"name="inp">Angular</input></label>
+    <label for="inp-7">
+        <input type="checkbox"name="inp">Django</input></label>
+    <label for="inp-7">
+        <input type="checkbox"name="inp">Spring</input></label>
+    </div>
+    <div class="form-control">
+      <label for="comment">
+          Describe yourself in few words
+      </label>
+
+      <!-- multiline Input from the user -->
+      <textarea name="comment" id="comment"
+          placeholder="Describe yourself">
+      </textarea>
+  </div>
+
+  <!--Submit Button-->
+  <button type="submit" value="submit">
+      Submit
+  </button>
+  </form>
+  
+</body>
+</html>
