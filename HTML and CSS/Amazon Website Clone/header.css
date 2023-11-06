@@ -1,0 +1,152 @@
+*{
+  margin: 0;
+  font-family: Arial;
+  /*To Include border with its actual height and width*/
+  border: border-box;
+}
+
+.navbar{
+  height: 60px;
+  background-color: #0f1111;
+  color : white;
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly ;
+}
+
+.nav-logo{
+  height: 50px;
+  width :100px;
+}
+
+/* 1st box */
+
+.logo{
+  background-image:  url("resources/amazon_logo.png");
+  background-size: cover;
+  height: 50px;
+  width: 100%;
+}
+
+.border{
+  border: 1.5px solid transparent;
+}
+
+.border:hover{
+  border:1.5px solid white;
+  cursor: pointer;
+}
+
+/*box -2 */
+
+.address-first{
+  color:white;
+  font-size: 0.85rem;
+  margin-left:15px;
+}
+
+.address-India{
+  font-size: 1rem;
+  margin-left: 3px;
+}
+
+.add-icon{
+  display: flex;
+  align-items: center;
+}
+
+/* box-3 styles */
+.nav-search{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: blueviolet;
+  width: 620px;
+  height: 40px;
+  border-radius:4px;
+}
+
+.nav-search:hover{
+  border: 2px solid orange;
+}
+
+.search-select{
+  background-color: #f3f3f3;
+  width: 50px;
+  text-align: center;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border: none;
+}
+
+.search-input{
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+}
+
+.search-icon{
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  background-color: #febd68;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  color: #0f1111;
+}
+
+/* box -4 */
+
+span{
+  font-size: 0.7rem;
+}
+
+.nav-second{
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* box-5 */
+.nav-cart i{
+  font-size: 30px;
+}
+
+.nav-cart{
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* panel styling */
+.panel{
+  height: 40px;
+  background-color: #222f3d;
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.panel-options p{
+  display: inline;
+  margin-left: 15px;
+}
+
+.panel-options{
+  width: 70%;
+  font-size: 0.85rem;
+}
+.panel-deals{
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.panel-options p{
+  border: 1.5px solid transparent;
+}
+
+.panel-options p:hover{
+  border:1.5px solid white;
+  cursor: pointer;
+}
+
