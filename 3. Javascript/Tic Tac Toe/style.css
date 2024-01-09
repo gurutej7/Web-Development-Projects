@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-size: 10vmin;
+}
+body{
+    background-color: #548687;
+    text-align: center;
+}
+
+.container{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game{
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+}
+
+.box{
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+    font-size: 8vmin;
+    color: #40b03e;
+}
+
+#reset-btn{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+}
+
+#reset-btn:hover{
+    cursor: pointer;
+    background-color: #3c3c38;
+}
+
+#newgame-btn{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+
+}
+#newgame-btn:hover{
+    cursor: pointer;
+    background-color: #3c3c38;
+}
+
+#win-msg{
+    color:#ffffc7;
+    font-size: 8vmin;
+}
+
+.win-msg-container{
+    height: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+
+}
+
+.hide{
+    display: none;
+}
+.who-will-start{
+    display: flex;
+    height: 20vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+}
+.hidden{
+    display: none;
+}
+
+.select-button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+.select-button{
+    height: 6vmin;
+    width: 10vmin;
+    font-size: 65%;
+    border: 0;
+    border-radius: 10px;
+    background-color: #2c2c23;
+    color: white ;
+}
+
+.select-button:hover{
+    cursor: pointer;
+    background-color: #050504;
+}

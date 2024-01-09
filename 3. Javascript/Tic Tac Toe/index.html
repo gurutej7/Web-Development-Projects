@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css" >
+	<title>Tic-Tac-Toe-Game</title>
+</head>
+<body>
+	<!-- Container to show the winner when the game is over -->
+	<div class="win-msg-container hide">
+		<p id = "win-msg"> Winner </p>
+		<button id="newgame-btn"> New Game</button>
+	</div>
+	<main>
+		<h1>Tic Tac Toe</h1>
+		<!-- Container to show options , who wants to start -->
+		<div class="who-will-start ">
+			Who wants to start ?
+			<div class="select-button-div">
+				<button id="select-button-O" class="select-button"> O </button>
+				<button id="select-button-X" class="select-button"> X </button>
+			</div>
+		</div>
+		<!-- A container which has the entire game in it-->
+		<div class="container">
+			<!-- Another container which has boxes (slots to play) of the game-->
+			<div class="game">
+				<!-- Each boc corresponds to one slot in the 3*3 board -->
+				<button class="box" ></button>
+				<button class="box" ></button>
+				<button class="box" ></button>
+				<button class="box" ></button>
+				<button class="box" ></button>
+				<button class="box" ></button>
+				<button class="box" ></button>
+				<button class="box" ></button>
+				<button class="box" ></button>
+			</div>
+		</div>
+		<button id="reset-btn"> Reset Game</button>
+	</main>
+
+	<script src="script.js" > </script>
+</body>
+</html>
