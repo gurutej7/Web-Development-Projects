@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1{
+   background-color:  rgb(121, 121, 183);
+    color: rgb(255, 252, 252);
+    height: 5rem;
+    line-height: 5rem; /* Trick to align at center */
+}
+
+.choice{
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+img{
+    height: 150px;
+    width: 150px;
+    object-fit: cover; /* To avoid distortion in image fiiting in the div */
+    border-radius: 50%;
+}
+
+.choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 5rem;
+
+}
+
+.score-board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-top: 3rem;
+    gap: 5rem;
+}
+
+#user-score , #computer-score{
+    font-size: 4rem;
+}
+
+.msg-container{
+    margin-top: 5rem;
+}
+
+#msg{
+    background-color: rgb(121, 121, 183);
+    color: rgb(4, 4, 4);
+    display: inline;
+    font-size: 3rem;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.reset{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8rem;
+}
+
+#reset-btn{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+}
+
+#reset-btn:hover{
+    opacity: 0.75;
+    background-color: black;
+    cursor: pointer;
+}
