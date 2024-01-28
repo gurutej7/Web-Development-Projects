@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Ubuntu&family=Varela+Round&display=swap');
+
+/* CSS ruless to use imported fonts
+font-family: 'Roboto', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+font-family: 'Varela Round', sans-serif;
+
+sans-serif is like a backup font style => if the browser fails to fetch/load the given font then it will automatically use "sans-serif"
+*/
+body{
+    background-color: aquamarine;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    font-family: 'Ubuntu', sans-serif;
+    
+}
+
+nav ul{
+    position: sticky;
+    display: flex;
+    align-items: center;
+    
+    list-style-type: none; /* To avoid by default dot symbol on list items */
+    height: 70px;
+    background-color: black;
+    color: white;
+}
+
+nav ul li {
+    padding: 0 15px;
+}
+
+.logo img{
+    width: 45px;
+    padding: 0 10px ;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.3rem;
+    padding-right: 10px;
+}
+
+.container{
+    min-height: 60vh;
+    background-color: black;
+    color: white;
+    font-family: 'Varela Round', sans-serif;
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    margin: 25px auto;
+    width: 75%;
+    border-radius: 24px;
+    padding: 34px;
+    background-image: url("images/bg.jpg");
+}
+
+.bottom{
+    position: sticky; 
+    /* https://www.w3schools.com/howto/howto_css_sticky_element.asp 
+    I will stick to the screen when you reach my scroll position
+    */
+    height: 140px;
+    background-color: black;
+    color: white;
+    bottom: 0 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.icons{
+    margin-top: 25px;
+}
+.icons i {
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+#myProgressBar{
+    width: 60vw;
+    cursor: pointer;
+
+
+}
+
+.song-item{
+    height: 50px;
+    display: flex;
+    background-color: white;
+   
+    color: black;
+    margin: 12px 0;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0 px;
+    cursor: pointer;
+
+}
+
+.song-item img{
+    width: 40px;
+    margin: 0 18px;
+    border-radius: 50%;
+
+}
+
+.song-item i {
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+#time-stamp{
+    margin: 0 10px;
+}
+
+.songList{
+    margin-top: 25px;
+}
+
+.songInfo{
+    position: absolute;
+    left: 20vw;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.3rem;
+
+}
+
+.songInfo img{
+    width: 34px;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
