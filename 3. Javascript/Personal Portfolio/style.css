@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Ubuntu&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+}
+.sidebar {
+  background-color: rgb(189, 184, 184);
+  width: 320px;
+  height: 100vh;
+}
+
+.sidebar nav {
+  padding: 45px;
+}
+
+.sidebar nav li {
+  list-style: none;
+  font-size: 30px;
+  padding: 33px 0;
+}
+
+.sidebar nav li a {
+  text-decoration: none;
+  color: black;
+}
+
+.main {
+  /* background-color: yellow; */
+  width: 90vw;
+  height: 100vh;
+}
+
+.info {
+  /* background-color: rgb(136, 0, 255); */
+  height: 60vh;
+  width: 80vw;
+  margin: 144px auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dev-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dev-pic img {
+  height: 60vh;
+}
+
+.hello {
+  font-size: 40px;
+  font-family: "Source Code Pro", monospace;
+}
+
+.name {
+  font-size: 50px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.about {
+  font-size: 40px;
+  font-family: "Source Code Pro", monospace;
+}
+
+.buttons button {
+  margin-top: 34px;
+  padding: 9px 14px;
+  border-radius: 22px;
+  background-color: aqua;
+  color: white;
+  font-weight: bold;
+  font-size: 21px;
+  margin-right: 3px;
+  cursor: pointer;
+  border: none;
+}
+
+.buttons button:hover {
+  color: blue;
+  background-color: white;
+}
+
+.more-about {
+  font-size: 28px;
+}
+
+.contact-form {
+  padding: 0 34px;
+  padding-top: 120px;
+  font-family: sans-serif;
+}
+
+.contact-form h1 {
+  font-family: sans-serif;
+  text-align: center;
+}
+.contact-form form div {
+  padding: 10px 0;
+}
+
+#emailHelp {
+  font-size: 8px;
+  color: midnightblue;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/3. Javascript/Personal Portfolio/style.css" />
+    <link rel="stylesheet" href="contact.css" />
+    <title>Personal Portfolio/ ContactMe</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <nav>
+          <ul>
+            <li>
+              <a href="/3. Javascript/Personal Portfolio/index.html">Home</a>
+            </li>
+            <li>
+              <a href="/3. Javascript/Personal Portfolio/IntroPage/intro.html"
+                >Intro</a
+              >
+            </li>
+            <li><a href="contact.html">Contact Me</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="main">
+        <div class="contact-form">
+          <h1>Contact Me for general Work enquiries</h1>
+          <form>
+            <div class="form-group">
+              <label for="clientEmail">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="clientEmail"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="clientPhone">Phone</label>
+              <input
+                type="phone"
+                class="form-control"
+                id="clientPhone"
+                placeholder="Phone Number"
+              />
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="isClient" />
+              <label class="form-check-label" for="isClient"
+                >I want you to work on a Project with me</label
+              >
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Ubuntu&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  padding-left: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main p {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 2rem;
+  font-family: "Source Code Pro", monospace;
+}
+
+.main div {
+  padding-bottom: 30px;
+}
+
+.main ul {
+  list-style-type: none;
+}
+
+.main h2 {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: 2.25rem;
+  font-family: "Ubuntu", sans-serif;
+  color: rgb(82, 36, 125);
+}
+
+.main li {
+  padding: 4px;
+  font-size: 1.25rem;
+  font-family: "Source Code Pro", monospace;
+}
+
+.main a {
+  text-decoration: none;
+}
