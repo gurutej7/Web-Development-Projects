@@ -269,3 +269,83 @@ That`s it for day 1 🫡
 That`s it for day 2 🫡
 <hr>
 
+### Important Topics
+
+#### 1. Event loop: 
+* The `event loop` is what allows Node.js to perform non-blocking I/O operations -- despite the fact that javascript is single-threaded -- by `offloading` operations to the system kernel whenever possible.
+* resources for more info [docs](https://nodejs.org/en/guides/event-loop-timers-and-nexttick/) 
+* video [1](https://www.youtube.com/watch?v=8aGhZQkoFbQ) video [2](https://www.youtube.com/watch?v=PNa9OMajw9w)
+* [slides](https://course-api.com/slides.html)
+
+#### 2. Async Patterns
+* We always should prefer to write code aynchronously , which can be achieved via different approaches like ,callback hell , Promises and async await.
+* check folder =>  01-Node-Tutorial/2-async-patterns , the codes in there are first executed in app.js and then moved there.
+
+#### 3. Events
+* `Event-Driven Programming` => Used Heavily in Node.js
+
+
+    ```js
+    // get back the class
+    // if want custom extend from class
+    // otherwise just for emitting and handling events create instance
+    const EventEmitter = require('events')
+
+    const customEmitter = new EventEmitter()
+
+    // on and emit methods   on => Listen for an event  ,  emit => emit an event
+    // In on method we pass in the string (name of the event) and a call back (to do some work ) when that particular event is occured
+    // keep track of the order
+    // additional arguments
+    // built-in modules utilize it
+
+    customEmitter.on('response', (name, id) => {
+    console.log(`data recieved user ${name} with id:${id}`)
+    });
+
+    customEmitter.on('response', () => {
+    console.log('some other logic here')
+    });
+
+    customEmitter.emit('response', 'guru', 21);
+    ```
+
+* First we will listen for the event then we emit it.
+* The order of placement of on and event method in the code matters.
+* We can pass extra arguments when we are emitting the event. and in the call back fundtion in the on method we can access those parameters.
+* refer [docs](https://nodejs.org/docs/latest/api/events.html) for different types of events
+
+
+
+#### 4.Streams
+* In Node there are 4 different types of streams.
+    * _Writable :_ Used to write data sequencially.
+    * _Readable :_ Used to read data sequencially.
+    * _Duplex :_ Used to both read and write data sequencially.
+    * _Transform :_ Used to modify data while reading or writing.
+* `Streams` extends `EventEmitter`  class , means we can use events on streams directly.
+* for different events [refer](https://nodejs.org/docs/latest/api/fs.html) inside Class : `fs.ReadStream`.
+* Reading data in chunks , below example. 
+
+    ```js
+    const { createReadStream } = require('fs')
+
+    // default 64kb (chunk size)
+    // last buffer - remainder
+    // highWaterMark - control size
+    // const stream = createReadStream('./content/big.txt', { highWaterMark: 90000 })
+    // const stream = createReadStream('../content/big.txt', { encoding: 'utf8' })
+    const stream = createReadStream('./content/big.txt')
+
+    stream.on('data', (result) => {
+    console.log(result)
+    })
+    stream.on('error', (err) => console.log(err))
+    ```
+
+
+_Done with Node Fundamentals_
+
+
+That`s it for day 3 🫡 
+<hr>
