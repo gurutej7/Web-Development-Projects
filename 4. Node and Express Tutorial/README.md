@@ -349,3 +349,162 @@ _Done with Node Fundamentals_
 
 That`s it for day 3 🫡 
 <hr>
+
+
+#### Http Request/Response Cycle
+* [slides](https://course-api.com/slides.html)
+
+* _http basics_:
+    *  In computer networking, a `port` or port number is a number assigned to uniquely identify a connection endpoint and to direct data to a specific service. At the software level, within an operating system, a port is a logical construct that identifies a specific process or a type of network service. [learn more](https://en.wikipedia.org/wiki/Port_(computer_networking))
+    * ports are specific for specific tasks.
+    * `res.end()` method must be called after sending the response.
+    * [status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+
+    ```js
+    // console.log('Express Tutorial')
+    const http = require("http");
+
+    const server = http.createServer((req, res) => {
+    // console.log("user hit the server");
+    // method to providing headers
+    // arguments are status code , object with key value pairs in which we specify headers (most common type is content-type ) => which type of content we want to send
+    // status codes is used to let the browser know what is happening
+    // res.writeHead(200,{'content-type' : 'text/html'});
+    // res.write('<h1>Hello World</h1>'); // method to write our response
+    // res.end();
+    // console.log(req.method)
+        const url = req.url;
+        // home page
+        if (url === "/") {
+            res.writeHead(200, { "content-type": "text/html" });
+            res.write("<h1>home page</h1>");
+            res.end();
+        }
+        // about page
+        else if (url === "/about") {
+            res.writeHead(200, { "content-type": "text/html" });
+            res.write("<h1>about page</h1>");
+            res.end();
+        }
+        // 404
+        else {
+            res.writeHead(404, { "content-type": "text/html" });
+            res.write("<h1>page not found</h1>");
+            res.end();
+        }
+    });
+
+    // port
+    server.listen(5000, () => {
+    console.log("server listening on port 5000");
+    });
+    
+    ```
+
+* _Example :_ A app , where we created a server using http module.
+    * we can read large data(using fs module) and store it in some variable and use it in `res.write()` method.
+    ```js
+    const http = require('http')
+    const { readFileSync } = require('fs')
+
+    // get all files
+    const homePage = readFileSync('./navbar-app/index.html')
+    const homeStyles = readFileSync('./navbar-app/styles.css')
+    const homeImage = readFileSync('./navbar-app/logo.svg')
+    const homeLogic = readFileSync('./navbar-app/browser-app.js')
+
+    const server = http.createServer((req, res) => {
+        // console.log(req.method)
+        const url = req.url
+        console.log(url)
+        // home page
+        if (url === '/') {
+            res.writeHead(200, { 'content-type': 'text/html' })
+            res.write(homePage) // inside this html file there are other resources that it needs 
+            // we need provide path for that resources also
+            res.end()
+        }
+        // about page
+        else if (url === '/about') {
+            res.writeHead(200, { 'content-type': 'text/html' })
+            res.write('<h1>about page</h1>')
+            res.end()
+        }
+        // Inside the homePage , these following url`s will e requested
+        // styles 
+        else if (url === '/styles.css') {
+            res.writeHead(200, { 'content-type': 'text/css' })
+            res.write(homeStyles)
+            res.end()
+        }
+        // image/logo
+        else if (url === '/logo.svg') {
+            res.writeHead(200, { 'content-type': 'image/svg+xml' })
+            res.write(homeImage)
+            res.end()
+        }
+        // logic
+        else if (url === '/browser-app.js') {
+            res.writeHead(200, { 'content-type': 'text/javascript' })
+            res.write(homeLogic)
+            res.end()
+        }
+        // 404
+        else {
+            res.writeHead(404, { 'content-type': 'text/html' })
+            res.write('<h1>page not found</h1>')
+            res.end()
+        }
+    })
+
+    server.listen(5000)
+    ```
+
+* The above example is used to say that we can set-up our server using `http` module , but when our application has large number of resources , then it would be difficult to manage all those resources as the code in the example.
+* So `express` makes things easier.
+
+
+### Express
+* Express is a minimal and flexible nodejs web app framework designed to make developing web apps and api`s much faster and easier.
+* Express is not officially part of node unlike http module.
+* [documentation](https://expressjs.com/)
+* `npm install express` command to import export express module.
+* _Express basics Example :_
+
+
+    ```js
+    const express = require('express');
+
+    const app = express(); // creates a server 
+
+    app.get('/' , (req,res) =>{
+        console.log('user hit the resource');
+        // res.send('Home Page');
+        res.status(200).send('Home Page');
+    })
+
+    app.get('/about', (req,res) =>{
+        res.status(200).send('About page');
+    })
+
+    app.all('*',(req,res) =>{
+        res.status(404).send('<h1> Resource Not Found </h1>');
+    })
+
+    app.listen(5000 , () =>{ // similar to server.listen used in http module
+        console.log("server is listening on port 5000");
+    })
+
+    // Different methods that we can use on express app
+    // app.get -> read data
+    // app.post -> insert data
+    // app.put -> update data
+    // app.delete -> delete data
+    // app.all
+    // app.use
+    // app.listen
+    ```
+
+That`s it for day 4 🫡 
+<hr>
