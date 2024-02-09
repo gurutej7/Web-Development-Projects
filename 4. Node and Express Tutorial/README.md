@@ -508,3 +508,193 @@ That`s it for day 3 🫡
 
 That`s it for day 4 🫡 
 <hr>
+
+#### static assets and public folder
+* The details about the topic is covered in the code comments
+    ```js
+    const express = require('express');
+
+    const app = express();
+    const path = require('path'); // to provide the absolute path
+    // all the static assets are placed in the public folder
+    // setup static and middleware
+    app.use(express.static('./public')); // if a request is made express will automaticall fetch that resource from the above mentioned file
+
+    // static files are those files which we won`t(server) be changing dynamically inside the file 
+    // for example image file , style file etc.
+
+    app.get('/' , (req,res) =>{
+        res.sendFile(path.resolve(__dirname,"./navbar-app/index.html"));
+        // we can comment the above line also and move index.tml to public folder
+        // because it is also a static
+        // when the page is loaded the express will automatically search for file named index.html and loads it.
+        // index.html is always going to be the root , when user hits the server the server by default serves the index.html
+        // the name should be index.html only
+        // here we are not handling requests that are made by the index.html file 
+        // instead we are going to keep those files in folder called public
+        // the name can be ending , but using public is a general practice
+    })
+    // for all requests for which we don`t created  a response
+    app.all('*' , (req,res) =>{
+        res.status(404).send("resource not found");
+    })
+
+    app.listen(5000, ()=>{
+        console.log("server listening at port 5000");
+    })
+    ```
+
+
+### API vs SSR
+
+* `API` -> Application Programming Interface
+* `SSR` -> Server side rendering
+
+| API                 | SSR               |
+| -------             | -------           |
+| API-JSON            | SSR -Template     |
+| Send Data           | Send Template     |
+| `res.json`          | `res.render`      |
+
+* API can mean differently in various scenarios
+* In express or in http case , when we talk about API , we mean setting up an http interface to interact with our data.
+* data is sent using json(Javascript object notation) ,inorder to send back our response we will use `res.json` which will do all the heavy lifting , for example setting up the proper content type and stringify our data.
+* The main idea with API`s is that our server provides data that means any frontend app that wants to access it and use it can simply perform a http request and using our data set up the api and functionality.
+
+
+* The other flavour we have is SSR where we will setup templates and will send back entire html , css and js.
+
+
+#### json basics
+
+```js
+        const express = require('express');
+        const app = express();
+        // there is a file called data in which we have bunch of onjects that we will be sending
+        const { products } = require('./data');
+        app.get('/', (req, res) => {
+        //  file products is a array
+        // .json will stringify the data and send the data as a string
+        res.json(products)
+        })
+
+        app.listen(5000, () => {
+        console.log('Server is listening on port 5000....')
+        })
+```
+* [docs json](https://expressjs.com/en/4x/api.html)
+
+#### `res.json([body])`
+* Sends a JSON response. This method sends a response (with the correct content-type) that is the parameter converted to a JSON string using JSON.stringify().
+* The parameter can be any JSON type, including object, array, string, Boolean, number, or null, and you can also use it to convert other values to JSON.
+
+    ```js
+        res.json(null)
+        res.json({ user: 'tobi' })
+        res.status(500).json({ error: 'message' })
+    ```
+
+#### Route Params
+* in the url `/:placeHolder`
+* the request object has a proprty `req.params` , by using the we can access a particular value of the route parameter passed in the url.
+* there can be multiple route parameters in a single url(uniform resource locator)
+
+#### Query String parameters
+* also called url parameters
+* it is a way for us to send small amount of information to the server using the url. 
+* This information is usually used as parameters to query database , filter results etc..
+* in order to access query string parameters use `req.query` .
+* `url/query?name=guru&age=21` example of query string parameter how it is used in the url
+* _The below code example covers the different aspects of **route params** and **query string parameters**_
+
+
+    ```js
+        const express = require("express");
+        const app = express();
+        // there is a file called data in which we have bunch of onjects that we will be sending
+        const { products } = require("./data.js");
+        app.get("/", (req, res) => {
+        //  file products is a array
+        // .json will stringify the data and send the data as a string
+        res.send("<h1> Home Page </h1> <a href='/api/products'>Products<a>");
+        });
+
+        app.get("/api/products", (req, res) => {
+        // in general we won`t be sending the entire data
+        // we are going to send the product without description
+        // I am going to create a new array without description
+        const newProducts = products.map((product) => {
+            // javascript method
+            // being selective of what we are sending back
+            const { id, name, image } = product;
+            return { id, name, image };
+        });
+        res.json(newProducts);
+        });
+
+        // we are going to give entire data when the user requests a particular product ,
+        app.get("/api/products/:productID", (req, res) => {
+        // console.log(req);
+        // console.log(req.params);
+        let { productID } = req.params; // getting the requested product id from the params
+        // searching for that product in the product array using the id
+        const singleProduct = products.find(
+            (product) => product.id === parseInt(productID)
+        );
+        // if it is a invalid id
+        if (!singleProduct) return res.status(404).send("product does not exist");
+        // sending that single product which is requested
+        res.json(singleProduct);
+        });
+
+        // Example to using multiple route params
+        app.get("/api/products/:productID/reviews/:reviewID", (req, res) => {
+        // console.log(req.params);
+        res.send("Hello example for using multiple route params");
+        });
+
+        // query string examples
+        app.get("/api/v1/query", (req, res) => {
+        // console.log(req.query);
+        const { search, limit } = req.query;
+        let sortedProducts = [...products];
+        // res.send("Hello this is a query string example");
+        // http://localhost:5000/api/v1/query?name=guru&id=4
+        // req.query output : { name: 'guru', id: '4' }
+        // we can add as many as query string parameters & is used to add multiple
+        // http://localhost:5000/api/v1/query?search=a&limit=2
+
+        if (search) {
+            // if search exists in our product then we are going to filter
+            sortedProducts = sortedProducts.filter((product) => {
+            return product.name.startsWith(search);
+            });
+        }
+        if (limit) {
+            sortedProducts = sortedProducts.slice(0, Number(limit));
+        }
+        if (sortedProducts.length < 1) {
+            // res.status(200).send('no products matched your search');
+            // common practice is as follows
+            return res.status(200).json({ success: true, data: [] });
+        }
+        // else // if we don`t add else here after the if statement javascript will read next line and sends that also
+        // for that the express(our server) will give error , i have already sent the response then why are you sending again
+        return res.status(200).json(sortedProducts);
+        // http://localhost:5000/api/v1/query?search=albany&limit=1
+        // we don`t need to pass all (both limit and name)
+        // we can pass only one
+        // if we don`t pass anything in our case we are sending back the entire products array
+        // http://localhost:5000/api/v1/query?search=a
+
+        // for one request we can send only one response
+        // instead of if else mess , we can use return at the res.send method
+        });
+
+        app.listen(5000, () => {
+        console.log("Server is listening on port 5000....");
+        });
+    ```
+
+That`s it for day 5 🫡 
+<hr>
