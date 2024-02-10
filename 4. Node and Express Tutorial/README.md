@@ -698,3 +698,99 @@ That`s it for day 4 🫡
 
 That`s it for day 5 🫡 
 <hr>
+
+
+### Middleware 
+* Express Middlewares are functions that execute during the request to the server , each middleware function has access to request and response objects.
+* Middleware sits in between req and res , that name itself says. `req -> middleware -> res`.
+* An Example of a Basic Middleware Functionality is as follows ,
+
+
+    ```js
+        const express = require('express')
+        const app = express()
+
+        //  req => middleware => res
+
+        const logger = (req,res,next) =>{ // even though we are not passing req and res express will supply them
+            const method =req.method;
+            const url = req.url;
+            const time = new Date().getFullYear();
+            console.log(method,url,time);
+            // res.send("Testing");
+            next(); // really important , if not added here then we will never be able to access that req , to send the response
+            // unless we are sending back the response , we should keep on passing it to the next middleware
+        }
+
+        app.get("/" ,logger,(req,res) =>{
+            res.send("Home");
+        })
+        app.get("/about",logger,(req,res) =>{
+            res.send("About"); // output:  GET /about 2024
+        })
+
+        app.listen(5000, () => {
+        console.log('Server is listening on port 5000....')
+        })
+    ```
+
+* In the above example the logger is the middleware , which is accessing our req , before we are sending back the response.
+* But in the above example for every route we are passing the middleware , instead we can use `app.use(middleware)` to link it to the all methods , we are handling.
+* we can keep the middleware in the separate file also , so that we keep our app.js clean. we can access that middleware by assigning it to a variable using `require("path")`
+* Example : `const logger = require('./logger');`
+* **Multiple Middleware Functions** : It is similar to passing single middleware function where we now will pass a `array` of middleware functions.
+* The order of placing in the array matters , the functions are executed from left to right.
+* Example of passing multiple middleware functions and using app.use is as follows .
+
+    ```js
+        const express = require('express')
+        const app = express();
+        const logger = require('./logger');
+        const authorize = require('./authorize');
+
+        //  req => middleware => res
+
+        // app.use(logger); // adding a middleware to all routes
+        // app.use will invoke that function passed inside for any route
+        // The order of code where we are placing the app.use matters.
+        // we can provide a other argument which is the path => app.use('/api',logger);
+        // the logger will be applied to all routes with api , in our case api/products and api/items
+        // if we did not pass the path then it is going to applied for all our paths.
+
+        app.use([logger,authorize]); // They are executed in the order from left to right , in this case logger is executed first then autorizer ,
+        // if we  change the order then it is vice versa.
+
+        app.get("/" ,(req,res) =>{
+            res.send("Home");
+        })
+        app.get("/about",(req,res) =>{
+            res.send("About"); 
+        })
+        app.get("/api/products",(req,res) =>{
+            res.send("Products"); 
+        })
+        app.get("/api/items",(req,res) =>{
+            res.send("Items"); 
+        })
+        app.listen(5000, () => {
+        console.log('Server is listening on port 5000....')
+        })
+
+    ```
+
+* _use vs route :_ Which one to use , there can be some middlewares which we don`t want to use for all routes . in such cases we will specify them in the method i.e, between route and the (req,res) as a parameter.
+* our options when it comes to middleware , 
+    * Creating our own middlewares as in the above examples.
+    * Express provides some built in middleware functions. (Ex : `app.use(express.static('./public'))` )
+    * Using third party middleware , for that we have to install it. Ex : morgan npm => `npm i morgan`
+
+### Http Methods :
+1. `GET` : Retrieves information from the specified resource, and should only be used to request data (not to modify it).
+2. `POST` : Sends data to the server for processing, usually resulting in a change in the server state or side effects on the server.
+3. `PUT` : Updates a current resource or creates it if it doest`nt exist, with the client providing a complete and updated copy of the resource.
+4. `PATCH` : Updates parts of an existing resource, with the client providing only the parts of the resource that needs to be updated.
+5. `DELETE` : Removes the specified resource from the server.
+6. [more info](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) 
+
+That`s it for day 6 🫡 
+<hr>
