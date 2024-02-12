@@ -5,7 +5,9 @@
 * Built on Chrome`s V8 JS Engine 
 * Big Community
 * Full-Stack
-* **[Tutorial Link](https://www.youtube.com/watch?v=Oe421EPjeBE&list=PPSV)** the following content/notes is made while following along this tutorial.
+* **[Node and Express Fundamentals Tutorial](https://www.youtube.com/watch?v=Oe421EPjeBE&list=PPSV)** the following content/notes is made while following along this tutorial.
+* **[Node and Express Projects Tutorial](https://www.youtube.com/watch?v=qwfE7fSVaZM)**
+* **[Computer Networking](https://www.youtube.com/watch?v=IPvYjXCsTg8)** 
 
 
 
