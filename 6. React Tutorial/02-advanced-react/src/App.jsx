@@ -1,10 +1,10 @@
 import React from "react";
-import ErrorExample from "./tutorial/01-useState/05-useState-gotcha";
+import Example from "./tutorial/02-useEffect/05-cleanup-function";
 function App() {
 	return (
 		<>
 			<div className="container">
-				<ErrorExample></ErrorExample>
+				<Example></Example>
 			</div>
 		</>
 	);
