@@ -1,5 +1,5 @@
 import React from "react";
-import Example from "./tutorial/06-forms/05-form-data";
+import Example from "./tutorial/08-custom-hooks/02-fetch-data";
 
 function App() {
 	return (
