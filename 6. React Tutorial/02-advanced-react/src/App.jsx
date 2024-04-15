@@ -1,10 +1,12 @@
 import React from "react";
-import Example from "./tutorial/02-useEffect/05-cleanup-function";
+import List from "./tutorial/05-leverage-javascript/List";
+
 function App() {
 	return (
 		<>
 			<div className="container">
-				<Example></Example>
+				<h2>Leverage JavaScript</h2>
+				<List />
 			</div>
 		</>
 	);
