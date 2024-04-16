@@ -1,13 +1,11 @@
 import React from "react";
-import Example from "./tutorial/08-custom-hooks/02-fetch-data";
+import Example from "./tutorial/10-useReducer/01-useReducer";
 
 function App() {
 	return (
-		<>
-			<div className="container">
-				<Example></Example>
-			</div>
-		</>
+		<div className="container">
+			<Example></Example>
+		</div>
 	);
 }
 
